@@ -1,0 +1,24 @@
+type Time = int;
+type Result_1 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: blob;
+ };
+type BlogPost = 
+ record {
+   content: text;
+   id: nat;
+   image: opt blob;
+   timestamp: Time;
+   title: text;
+ };
+service : {
+  addPost: (text, text, opt blob) -> (Result_1);
+  getPosts: () -> (vec BlogPost) query;
+  uploadImage: (blob) -> (Result);
+}
